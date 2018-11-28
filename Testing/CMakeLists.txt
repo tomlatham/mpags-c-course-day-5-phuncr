@@ -32,3 +32,9 @@ add_test(NAME test-caesarcipher COMMAND testCaesarCipher)
 add_executable(testPlayfairCipher testPlayfairCipher.cpp)
 target_link_libraries(testPlayfairCipher MPAGSCipher Catch)
 add_test(NAME test-playfaircipher COMMAND testPlayfairCipher)
+
+# Test Cipher Class
+add_executable(testCipher testCipher.cpp)
+target_link_libraries(testCipher MPAGSCipher Catch)
+add_test(NAME test-cipher COMMAND testCipher)
+
