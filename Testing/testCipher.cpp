@@ -38,7 +38,7 @@ TEST_CASE("Cipher encryption", "[encrypt]")
   outputText.push_back("FHIQXLTLKLTLSUFNPQPKETFENIOLVSWLTFIAFTLAKOWATEQOKPPA");
   outputText.push_back("RIJVSUYVJN");
 
-  for ( int i=0; i<3; i++ )
+  for ( size_t i=0; i<inventory.size(); i++ )
   {  
     REQUIRE( testCipher(inventory[i], CipherMode::Encrypt, inputText[i], outputText[i]));
   }
@@ -61,9 +61,9 @@ TEST_CASE("Cipher decryption", "[decrypt]")
   outputText.push_back("BOBISXSOMESORTOFIUNIORCOMPLEXQXENOPHONEONEZEROTHINGZ");
   outputText.push_back("HELLOWORLD");
 
-  for ( int i=0; i<0; i++ )
+  for ( size_t i=0; i<inventory.size(); i++ )
   {  
-    REQUIRE( testCipher(inventory[i-3], CipherMode::Decrypt, inputText[i], outputText[i]));
+    REQUIRE( testCipher(inventory[i], CipherMode::Decrypt, inputText[i], outputText[i]));
   }
 }
 

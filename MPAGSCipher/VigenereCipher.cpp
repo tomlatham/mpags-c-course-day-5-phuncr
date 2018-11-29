@@ -30,10 +30,11 @@ void VigenereCipher::setKey( const std::string& key )
   if(key_.empty())
   { 
       key_="A";
-      std::cout << "Key has been set to " << key_ << std::endl;
+      std::cerr << "[warning] key provided is empty, key has been set to " << key_ << std::endl;
   }
 
   // loop over the key
+  charLookup_.clear();
   for(size_t i=0; i<key_.size(); i++)
   {
       // Find the letter position in the alphabet

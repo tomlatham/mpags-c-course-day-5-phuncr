@@ -18,11 +18,17 @@
  */
 class Cipher {
   public:
+    /// Default constructor
     Cipher() = default;
+    /// Copy constructor
     Cipher(const Cipher& rhs) = default;
+    /// Move constructor
     Cipher(Cipher&& rhs) = default;
+    /// Copy assignment operator
     Cipher& operator=(const Cipher& rhs) = default;
+    /// Move assignment operator
     Cipher& operator=(Cipher&& rhs) = default;
+    /// Destructor
     virtual ~Cipher() = default;
 
     /**
@@ -34,8 +40,6 @@ class Cipher {
      */
     virtual std::string applyCipher( const std::string& inputText, const 
                                      CipherMode cipherMode ) const = 0;
-
-  private:
 };
 
 #endif

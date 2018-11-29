@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
 
   // Handle version, if requested
   if (settings.versionRequested) {
-    std::cout << "0.2.0" << std::endl;
+    std::cout << "0.5.0" << std::endl;
     // Like help, requires no further action, so return from main,
     // with 0 used to indicate success
     return 0;
@@ -102,9 +102,17 @@ int main(int argc, char* argv[])
     }
   }
 
-  std::string outputText {""};
+  // Request construction of the appropriate cipher
   auto aCipher = cipherFactory( settings.cipherType, settings.cipherKey);
-  outputText = aCipher->applyCipher( inputText, settings.cipherMode );
+
+  // Check that the cipher was constructed successfully
+  if ( ! aCipher ) {
+    std::cerr << "[error] problem constructing requested cipher" << std::endl;
+    return 1;
+  }
+
+  // Run the cipher on the input text, specifying whether to encrypt/decrypt
+  std::string outputText { aCipher->applyCipher( inputText, settings.cipherMode ) };
 
   // Output the transliterated text
   if (!settings.outputFile.empty()) {
